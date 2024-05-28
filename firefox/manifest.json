@@ -1,19 +1,19 @@
 {
     "manifest_version": 2,
-    "name": "Wiki Journey",
+    "name": "Reddit Journey",
     "version": "1.2",
-    "description": "Visualizes your daily Wikipedia adventures",
+    "description": "Visualizes your daily Reddit adventures",
     "permissions": [
     "tabs",
     "storage",
-    "*://*.wikipedia.org/*"
+    "*://*.reddit.com/*"
     ],
     "background": {
     "scripts": ["background.js"]
     },
     "content_scripts": [
     {
-        "matches": ["*://*.wikipedia.org/*"],
+        "matches": ["*://*.reddit.com/*"],
         "js": ["content.js"]
     }
     ],

@@ -1,21 +1,21 @@
-function isValidWikipediaArticle() {
-    // Check if the URL follows the typical pattern for Wikipedia articles
-    // This regex matches the main article pages but excludes special pages, user pages, etc.
-    const urlRegex = /^https?:\/\/[a-z]+\.wikipedia\.org\/wiki\/(?!Special:|User:|Wikipedia:|File:|MediaWiki:|Template:|Help:|Category:|Portal:|Draft:|TimedText:|Module:|Gadget:|Gadget_definition:|Education_Program:|Topic:|Book:|Special:Search|Special:RecentChanges).+/;
+function isValidSubreddit() {
+    // Check if the URL follows the typical pattern for subreddit pages
+    // This regex matches subreddit pages but excludes special Reddit pages, user pages, etc.
+    const urlRegex = /^https?:\/\/(www\.)?reddit\.com\/r\/[^\/]+\/?$/;
     return urlRegex.test(window.location.href);
 }
 
-function sendArticleInfo() {
-    if (isValidWikipediaArticle()) {
-        const title = document.querySelector('h1').innerText;
+function sendSubredditInfo() {
+    if (isValidSubreddit()) {
+        const title = document.querySelector('h1').innerText; // Assuming the subreddit title is in an <h1> tag
         const url = window.location.href;
-        const parent = document.referrer.includes("wikipedia.org") && isValidWikipediaArticle(document.referrer) ? document.referrer : null;
+        const parent = document.referrer.includes("reddit.com/r/") && isValidSubreddit(document.referrer) ? document.referrer : null;
 
         browser.runtime.sendMessage({
-            article: { title, url, parent }
+            subreddit: { title, url, parent }
         });
     }
 }
 
 // Execute when the script loads
-sendArticleInfo();
+sendSubredditInfo();

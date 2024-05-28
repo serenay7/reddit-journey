@@ -28,7 +28,7 @@ document.getElementById('shareButton').addEventListener('click', function() {
     }
     
     // Adjust the watermark position based on viewBox
-    const watermarkString = `<text x="${minX + 10}" y="${minY + 20}" style="font-family: 'LinBiolinum_aS'; font-size: 36px;" fill="#000" opacity="0.5">Wiki Journey</text>`;
+    const watermarkString = `<text x="${minX + 10}" y="${minY + 20}" style="font-family: 'LinBiolinum_aS'; font-size: 36px;" fill="#000" opacity="0.5">Reddit Journey</text>`;
     data = data.replace('</svg>', `${watermarkString}</svg>`);
     const svgBlob = new Blob([data], {type: 'image/svg+xml;charset=utf-8'});
     const url = URL.createObjectURL(svgBlob);
@@ -47,7 +47,7 @@ document.getElementById('shareButton').addEventListener('click', function() {
             // Create a temporary anchor element and trigger the download
             const downloadLink = document.createElement('a');
             downloadLink.href = blobUrl;
-            downloadLink.download = 'wikijourney.png'; // Specify the download file name
+            downloadLink.download = 'redditjourney.png'; // Specify the download file name
             document.body.appendChild(downloadLink); // Append to the document
             downloadLink.click(); // Trigger the download
 
